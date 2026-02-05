@@ -1,0 +1,65 @@
+import { Camera, Mountain, Video, Package } from 'lucide-react';
+
+export const services = [
+  {
+    id: 'nature',
+    title: 'Nature Photography',
+    icon: Camera,
+    price: '$500',
+    description: 'Intimate close-up and macro photography of flora, fauna, and natural details that tell a story.',
+    features: [
+      'Half-day shooting session',
+      '30+ edited high-res images',
+      'Online gallery delivery',
+      'Print-ready files',
+      'Personal use license',
+    ],
+  },
+  {
+    id: 'landscape',
+    title: 'Landscape Photography',
+    icon: Mountain,
+    price: '$750',
+    popular: true,
+    description: 'Sweeping vistas and dramatic scenery captured at the perfect moment with professional-grade equipment.',
+    features: [
+      'Full-day shooting session',
+      '50+ edited high-res images',
+      'Drone aerial shots included',
+      'Online gallery delivery',
+      'Print-ready files',
+      'Commercial use license',
+    ],
+  },
+  {
+    id: 'video',
+    title: 'Cinematic Videography',
+    icon: Video,
+    price: '$1,200',
+    description: 'Cinematic 4K video production with professional color grading, stabilization, and music licensing.',
+    features: [
+      'Full-day filming session',
+      '3-5 minute edited film',
+      'Drone footage included',
+      '4K resolution delivery',
+      'Licensed background music',
+      'Two revision rounds',
+    ],
+  },
+  {
+    id: 'bundle',
+    title: 'Photo & Video Bundle',
+    icon: Package,
+    price: '$1,800',
+    description: 'The complete package — stunning photography and cinematic videography in a single session.',
+    features: [
+      'Full-day photo + video session',
+      '50+ edited photos',
+      '3-5 minute cinematic film',
+      'Drone coverage included',
+      'All file formats delivered',
+      'Commercial use license',
+      'Three revision rounds',
+    ],
+  },
+];
