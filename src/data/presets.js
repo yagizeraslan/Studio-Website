@@ -1,0 +1,30 @@
+export const presets = [
+  {
+    id: 'night',
+    title: 'Night Collection',
+    description: 'Moody, cinematic tones for low-light and night photography. Deep shadows, cool blues, and rich contrast for astrophotography, cityscapes, and golden hour fading into dusk.',
+    includes: ['12 Lightroom Presets (.xmp)', '8 Video LUTs (.cube)', 'Mobile compatible (.dng)'],
+    price: '$29',
+    gradient: 'from-indigo-900/60 via-blue-900/40 to-slate-900/60',
+    storeUrl: '#',
+  },
+  {
+    id: 'day',
+    title: 'Day Collection',
+    description: 'Bright, warm tones for daylight and golden hour shooting. Natural greens, warm highlights, and soft contrast for landscapes, nature, and outdoor adventures.',
+    includes: ['12 Lightroom Presets (.xmp)', '8 Video LUTs (.cube)', 'Mobile compatible (.dng)'],
+    price: '$29',
+    gradient: 'from-amber-900/60 via-orange-800/40 to-yellow-900/60',
+    storeUrl: '#',
+  },
+  {
+    id: 'all',
+    title: 'Complete Bundle',
+    description: 'Everything in one package — the full Night and Day collections plus 4 exclusive bonus presets and LUTs you won\'t find anywhere else.',
+    includes: ['28 Lightroom Presets (.xmp)', '20 Video LUTs (.cube)', 'Mobile compatible (.dng)', '4 Exclusive bonus presets'],
+    price: '$45',
+    popular: true,
+    gradient: 'from-studio-accent/30 via-amber-800/20 to-stone-900/40',
+    storeUrl: '#',
+  },
+];

@@ -4,6 +4,7 @@ import { useScrollSpy } from '../../hooks/useScrollSpy';
 
 const navLinks = [
   { id: 'portfolio', label: 'Portfolio' },
+  { id: 'presets', label: 'Presets' },
   { id: 'services', label: 'Services' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
