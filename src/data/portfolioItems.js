@@ -26,7 +26,7 @@ export const portfolioItems = [
     category: 'Night Urban',
     description: 'Fishermen on Galata Bridge with the illuminated tower watching over Istanbul.',
     src: `${IMAGE_BASE}/IMG_20240906_223937.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Istanbul, Türkiye',
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ export const portfolioItems = [
     category: 'Night Urban',
     description: 'Two figures wait at a rain-soaked bus stop, warm amber reflections streaking the pavement.',
     src: `${IMAGE_BASE}/IMG_20250404_215943.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Ankara, Türkiye',
   },
   {
     id: 5,
@@ -68,7 +68,7 @@ export const portfolioItems = [
     category: 'Architecture',
     description: 'Istanbul\'s medieval stone tower glowing warmly against the night sky.',
     src: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Istanbul, Türkiye',
   },
   {
     id: 9,
@@ -102,7 +102,7 @@ export const portfolioItems = [
     category: 'Atmosphere',
     description: 'Surreal crimson fog engulfs a seaside venue, neon lights bleeding through the mist.',
     src: `${IMAGE_BASE}/IMG_20250216_023741.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Ankara, Türkiye',
   },
   {
     id: 13,
@@ -118,7 +118,7 @@ export const portfolioItems = [
     category: 'Atmosphere',
     description: 'Cozy cafe exterior on a rainy night, neon signs reflecting on wet pavement.',
     src: `${IMAGE_BASE}/IMG_20241215_180344%20(2).jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Istanbul, Türkiye',
   },
   {
     id: 15,
@@ -134,7 +134,7 @@ export const portfolioItems = [
     category: 'Atmosphere',
     description: 'Golden hour light filtering through peak autumn foliage.',
     src: `${IMAGE_BASE}/IMG_20251104_160743.jpg`,
-    location: 'Dublin, Ireland',
+    location: 'Ankara, Türkiye',
   },
 
   // Travel
@@ -144,7 +144,7 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Aerial view of crystal-clear Mediterranean waters meeting golden sand.',
     src: `${IMAGE_BASE}/IMG_20240505_205020.jpg`,
-    location: 'Mediterranean Coast',
+    location: 'Fethiye, Türkiye',
   },
   {
     id: 18,
@@ -152,7 +152,7 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Warm sunset over a coastal town with mountains fading into the horizon.',
     src: `${IMAGE_BASE}/IMG_20251005_182530%202.jpg`,
-    location: 'Turkey',
+    location: 'Zonguldak, Türkiye',
   },
   {
     id: 19,
@@ -160,7 +160,7 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Silhouetted yacht against a blazing orange sunset over calm waters.',
     src: `${IMAGE_BASE}/IMG_20240501_193920.jpg`,
-    location: 'Mediterranean Sea',
+    location: 'Fethiye, Türkiye',
   },
   {
     id: 20,
@@ -168,7 +168,7 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Istanbul\'s iconic Kiz Kulesi standing guard over the Bosphorus.',
     src: `${IMAGE_BASE}/IMG_20250412_115836.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Istanbul, Türkiye',
   },
 
   // Street Life
@@ -178,7 +178,7 @@ export const portfolioItems = [
     category: 'Street Life',
     description: 'Candid moment of a transaction at a Turkish street food kiosk.',
     src: `${IMAGE_BASE}/IMG_20241125_180007%20(1).jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Istanbul, Türkiye',
   },
   {
     id: 22,
@@ -194,7 +194,7 @@ export const portfolioItems = [
     category: 'Street Life',
     description: 'Vibrant nightlife scene outside Papillon Pub with warm amber glow.',
     src: `${IMAGE_BASE}/IMG_20250517_233428.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Ankara, Türkiye',
   },
   {
     id: 24,
@@ -210,7 +210,7 @@ export const portfolioItems = [
     category: 'Street Life',
     description: 'Urban street with tram tracks leading into the neon-lit night.',
     src: `${IMAGE_BASE}/IMG_20250206_015237.jpg`,
-    location: 'Istanbul, Turkey',
+    location: 'Antalya, Türkiye',
   },
   {
     id: 26,
