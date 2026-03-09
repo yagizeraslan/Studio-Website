@@ -27,8 +27,9 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="py-24">
+      {/* Header - centered with max-width */}
+      <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-16">
             <p className="text-studio-accent text-xs tracking-[0.3em] uppercase mb-4">
@@ -48,7 +49,10 @@ export default function Portfolio() {
             onChange={setActiveFilter}
           />
         </ScrollReveal>
+      </div>
 
+      {/* Gallery - full width edge to edge */}
+      <div className="px-4 mt-8">
         <ScrollReveal delay={200}>
           <GalleryGrid items={filtered} onSelect={setLightboxItem} />
         </ScrollReveal>

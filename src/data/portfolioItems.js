@@ -52,6 +52,14 @@ export const portfolioItems = [
     src: `${IMAGE_BASE}/IMG_20260125_170338.jpg`,
     location: 'Dublin, Ireland',
   },
+  {
+    id: 29,
+    title: 'Trabzon Noir',
+    category: 'Night Urban',
+    description: 'A lone figure walks through a moody urban alleyway, high-rises looming in the distance.',
+    src: `${IMAGE_BASE}/IMG_20251009_220623.jpg`,
+    location: 'Trabzon, Türkiye',
+  },
 
   // Architecture
   {
@@ -100,6 +108,22 @@ export const portfolioItems = [
     category: 'Architecture',
     description: 'Victorian commercial architecture bathed in warm light against the deep blue Dublin sky.',
     src: `${IMAGE_BASE}/IMG_20260221_180119%20(2).jpg`,
+    location: 'Dublin, Ireland',
+  },
+  {
+    id: 34,
+    title: 'Airport Terminal',
+    category: 'Architecture',
+    description: 'Dramatic arched ceiling of an airport terminal captured in moody black and white.',
+    src: `${IMAGE_BASE}/IMG_20250926_025259%20(1).jpg`,
+    location: 'İstanbul, Türkiye',
+  },
+  {
+    id: 35,
+    title: 'Trinity College Courtyard',
+    category: 'Architecture',
+    description: 'Historic cobblestone courtyard with Georgian architecture on a rainy Dublin day.',
+    src: `${IMAGE_BASE}/IMG_20251207_130739.jpg`,
     location: 'Dublin, Ireland',
   },
 
@@ -152,6 +176,14 @@ export const portfolioItems = [
     src: `${IMAGE_BASE}/IMG_20260221_195136.jpg`,
     location: 'Dublin, Ireland',
   },
+  {
+    id: 30,
+    title: 'Rainy Evening',
+    category: 'Atmosphere',
+    description: 'Romantic rainy street with cafe seating and warm decorative lights reflecting on wet pavement.',
+    src: `${IMAGE_BASE}/IMG_20241121_184929.jpg`,
+    location: 'Antalya, Türkiye',
+  },
 
   // Travel
   {
@@ -184,6 +216,14 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Istanbul\'s iconic Kiz Kulesi standing guard over the Bosphorus.',
     src: `${IMAGE_BASE}/IMG_20250412_115836.jpg`,
+    location: 'İstanbul, Türkiye',
+  },
+  {
+    id: 31,
+    title: 'Golden Horn Panorama',
+    category: 'Travel',
+    description: 'Expansive view of İstanbul with ferries crossing the Golden Horn and mosques dotting the skyline.',
+    src: `${IMAGE_BASE}/IMG_20240909_113731.jpg`,
     location: 'İstanbul, Türkiye',
   },
 
@@ -235,5 +275,21 @@ export const portfolioItems = [
     description: 'Dublin\'s famous shopping street alive with Christmas decorations.',
     src: `${IMAGE_BASE}/IMG_20251213_162028.jpg`,
     location: 'Dublin, Ireland',
+  },
+  {
+    id: 32,
+    title: 'Path to Galata',
+    category: 'Street Life',
+    description: 'A solo figure walks through a narrow alley toward the iconic Galata Tower.',
+    src: `${IMAGE_BASE}/IMG_20240909_103726%20(1).jpg`,
+    location: 'İstanbul, Türkiye',
+  },
+  {
+    id: 33,
+    title: 'Café Alley from Above',
+    category: 'Street Life',
+    description: 'Overhead view of a narrow pedestrian street lined with cafes and outdoor seating.',
+    src: `${IMAGE_BASE}/IMG_20240909_115244.jpg`,
+    location: 'İstanbul, Türkiye',
   },
 ];

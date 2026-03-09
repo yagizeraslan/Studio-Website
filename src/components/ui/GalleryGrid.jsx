@@ -1,5 +1,12 @@
 import { useState } from 'react';
+import Masonry from 'react-masonry-css';
 import { MapPin } from 'lucide-react';
+
+const breakpointColumns = {
+  default: 4,
+  1023: 2,
+  639: 1,
+};
 
 export default function GalleryGrid({ items, onSelect }) {
   const [loadedImages, setLoadedImages] = useState({});
@@ -9,12 +16,16 @@ export default function GalleryGrid({ items, onSelect }) {
   };
 
   return (
-    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+    <Masonry
+      breakpointCols={breakpointColumns}
+      className="flex w-auto -ml-4"
+      columnClassName="pl-4 bg-clip-padding"
+    >
       {items.map((item) => (
         <button
           key={item.id}
           onClick={() => onSelect(item)}
-          className="group relative w-full overflow-hidden bg-studio-surface border-none cursor-pointer p-0 break-inside-avoid block"
+          className="group relative w-full overflow-hidden bg-studio-surface border-none cursor-pointer p-0 block mb-4"
         >
           {/* Loading skeleton */}
           {!loadedImages[item.id] && (
@@ -49,6 +60,6 @@ export default function GalleryGrid({ items, onSelect }) {
           </div>
         </button>
       ))}
-    </div>
+    </Masonry>
   );
 }
