@@ -1,6 +1,8 @@
-import { Download, Check, ExternalLink } from 'lucide-react';
+import { Check, ExternalLink } from 'lucide-react';
 import { presets } from '../../data/presets';
 import ScrollReveal from '../ui/ScrollReveal';
+
+const IMAGE_BASE = 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/main/Photography/Studio';
 
 export default function Presets() {
   return (
@@ -16,17 +18,17 @@ export default function Presets() {
             </h2>
             <p className="text-studio-body max-w-2xl mx-auto mb-6">
               The same Lightroom presets and video LUTs I use in my own work — crafted for
-              nature and landscape creators.
+              urban night photography and cinematic street scenes.
             </p>
             <div className="gold-line max-w-xs mx-auto" />
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {presets.map((preset, i) => (
             <ScrollReveal key={preset.id} delay={i * 100}>
               <div
-                className={`relative flex flex-col border transition-all duration-300 hover:-translate-y-1 ${
+                className={`group relative flex flex-col border transition-all duration-300 hover:-translate-y-1 ${
                   preset.popular
                     ? 'border-studio-accent/50'
                     : 'border-studio-border hover:border-studio-body/30'
@@ -38,11 +40,14 @@ export default function Presets() {
                   </span>
                 )}
 
-                {/* Preview gradient */}
-                <div className={`aspect-[16/9] bg-gradient-to-br ${preset.gradient} relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Download size={32} className="text-white/20" />
-                  </div>
+                {/* Preview image */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <img
+                    src={`${IMAGE_BASE}/${preset.previewImage}`}
+                    alt={preset.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${preset.gradient} opacity-40`} />
                 </div>
 
                 {/* Content */}
