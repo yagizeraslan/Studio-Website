@@ -54,7 +54,7 @@ export const portfolioItems = [
   },
   {
     id: 29,
-    title: 'Trabzon Noir',
+    title: 'Urban Solitude',
     category: 'Night Urban',
     description: 'A lone figure walks through a moody urban alleyway, high-rises looming in the distance.',
     src: `${IMAGE_BASE}/IMG_20251009_220623.jpg`,
