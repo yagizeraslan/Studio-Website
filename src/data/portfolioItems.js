@@ -26,7 +26,7 @@ export const portfolioItems = [
     category: 'Night Urban',
     description: 'Fishermen on Galata Bridge with the illuminated tower watching over Istanbul.',
     src: `${IMAGE_BASE}/IMG_20240906_223937.jpg`,
-    location: 'Istanbul, Türkiye',
+    location: 'İstanbul, Türkiye',
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ export const portfolioItems = [
     category: 'Architecture',
     description: 'Istanbul\'s medieval stone tower glowing warmly against the night sky.',
     src: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg`,
-    location: 'Istanbul, Türkiye',
+    location: 'İstanbul, Türkiye',
   },
   {
     id: 9,
@@ -118,7 +118,7 @@ export const portfolioItems = [
     category: 'Atmosphere',
     description: 'Cozy cafe exterior on a rainy night, neon signs reflecting on wet pavement.',
     src: `${IMAGE_BASE}/IMG_20241215_180344%20(2).jpg`,
-    location: 'Istanbul, Türkiye',
+    location: 'İstanbul, Türkiye',
   },
   {
     id: 15,
@@ -168,7 +168,7 @@ export const portfolioItems = [
     category: 'Travel',
     description: 'Istanbul\'s iconic Kiz Kulesi standing guard over the Bosphorus.',
     src: `${IMAGE_BASE}/IMG_20250412_115836.jpg`,
-    location: 'Istanbul, Türkiye',
+    location: 'İstanbul, Türkiye',
   },
 
   // Street Life
@@ -178,7 +178,7 @@ export const portfolioItems = [
     category: 'Street Life',
     description: 'Candid moment of a transaction at a Turkish street food kiosk.',
     src: `${IMAGE_BASE}/IMG_20241125_180007%20(1).jpg`,
-    location: 'Istanbul, Türkiye',
+    location: 'İstanbul, Türkiye',
   },
   {
     id: 22,
