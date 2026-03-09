@@ -94,6 +94,14 @@ export const portfolioItems = [
     src: `${IMAGE_BASE}/IMG_20251220_170724%20(1).jpg`,
     location: 'Dublin, Ireland',
   },
+  {
+    id: 27,
+    title: 'Penneys at Blue Hour',
+    category: 'Architecture',
+    description: 'Victorian commercial architecture bathed in warm light against the deep blue Dublin sky.',
+    src: `${IMAGE_BASE}/IMG_20260221_180119%20(2).jpg`,
+    location: 'Dublin, Ireland',
+  },
 
   // Atmosphere
   {
@@ -135,6 +143,14 @@ export const portfolioItems = [
     description: 'Golden hour light filtering through peak autumn foliage.',
     src: `${IMAGE_BASE}/IMG_20251104_160743.jpg`,
     location: 'Ankara, Türkiye',
+  },
+  {
+    id: 28,
+    title: 'Hibernia & Crescent',
+    category: 'Atmosphere',
+    description: 'The Hibernia statue atop the GPO stands silhouetted as a crescent moon rises over Dublin.',
+    src: `${IMAGE_BASE}/IMG_20260221_195136.jpg`,
+    location: 'Dublin, Ireland',
   },
 
   // Travel
