@@ -11,6 +11,7 @@ export const portfolioItems = [
     description: 'A lone figure crosses a foggy Dublin street, streetlights diffused into ethereal orbs.',
     src: `${IMAGE_BASE}/IMG_20260210_185551%20(2).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/2.5', iso: 899, focalLength: '120mm' },
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const portfolioItems = [
     description: 'Dublin\'s iconic bridge with colorful city lights dancing on the River Liffey.',
     src: `${IMAGE_BASE}/IMG_20251206_215631.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/6s', aperture: 'f/2.5', iso: 1470, focalLength: '120mm' },
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ export const portfolioItems = [
     description: 'Fishermen on Galata Bridge with the illuminated tower watching over Istanbul.',
     src: `${IMAGE_BASE}/IMG_20240906_223937.jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/8s', aperture: 'f/2.5', iso: 3160, focalLength: '120mm' },
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ export const portfolioItems = [
     description: 'Two figures wait at a rain-soaked bus stop, warm amber reflections streaking the pavement.',
     src: `${IMAGE_BASE}/IMG_20250404_215943.jpg`,
     location: 'Ankara, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/25s', aperture: 'f/1.8', iso: 1994, focalLength: '75mm' },
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const portfolioItems = [
     description: 'Dynamic panning shot of a cyclist cutting through wet city streets.',
     src: `${IMAGE_BASE}/IMG_20260111_184420%20(2).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/40s', aperture: 'f/2.5', iso: 6399, focalLength: '120mm' },
   },
   {
     id: 6,
@@ -51,6 +56,7 @@ export const portfolioItems = [
     description: 'The vibrant energy of Dublin\'s Temple Bar district with neon signs blazing.',
     src: `${IMAGE_BASE}/IMG_20260125_170338.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2.5', iso: 1694, focalLength: '120mm' },
   },
   {
     id: 29,
@@ -59,6 +65,7 @@ export const portfolioItems = [
     description: 'A lone figure walks through a moody urban alleyway, high-rises looming in the distance.',
     src: `${IMAGE_BASE}/IMG_20251009_220623.jpg`,
     location: 'Trabzon, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/6s', aperture: 'f/2.5', iso: 1867, focalLength: '120mm' },
   },
 
   // Architecture
@@ -69,6 +76,7 @@ export const portfolioItems = [
     description: 'Neoclassical columns dramatically lit against the deep blue hour sky.',
     src: `${IMAGE_BASE}/IMG_20251213_163626%20(1).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/1.6', iso: 228, focalLength: '23mm' },
   },
   {
     id: 8,
@@ -77,6 +85,7 @@ export const portfolioItems = [
     description: 'Istanbul\'s medieval stone tower glowing warmly against the night sky.',
     src: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/6s', aperture: 'f/2.5', iso: 1632, focalLength: '120mm' },
   },
   {
     id: 9,
@@ -85,6 +94,7 @@ export const portfolioItems = [
     description: 'Dramatic low-angle view of gothic spires reaching into twilight.',
     src: `${IMAGE_BASE}/IMG_20251220_173312%20(1).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/13s', aperture: 'f/1.6', iso: 803, focalLength: '23mm' },
   },
   {
     id: 10,
@@ -93,6 +103,7 @@ export const portfolioItems = [
     description: 'Ornate Victorian bank building with warm uplighting and festive decorations.',
     src: `${IMAGE_BASE}/IMG_20251213_163434.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/1.6', iso: 134, focalLength: '23mm' },
   },
   {
     id: 11,
@@ -101,14 +112,16 @@ export const portfolioItems = [
     description: 'Classical domed building with illuminated trees lining the approach.',
     src: `${IMAGE_BASE}/IMG_20251220_170724%20(1).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/25s', aperture: 'f/2.5', iso: 1077, focalLength: '120mm' },
   },
   {
     id: 27,
     title: 'Penneys at Blue Hour',
     category: 'Architecture',
     description: 'Victorian commercial architecture bathed in warm light against the deep blue Dublin sky.',
-    src: `${IMAGE_BASE}/IMG_20260221_180119%20(2).jpg`,
+    src: `${IMAGE_BASE}/IMG_20260221_180119.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/60s', aperture: 'f/1.6', iso: 401, focalLength: '23mm' },
   },
   {
     id: 34,
@@ -117,6 +130,7 @@ export const portfolioItems = [
     description: 'Dramatic arched ceiling of an airport terminal captured in moody black and white.',
     src: `${IMAGE_BASE}/IMG_20250926_025259%20(1).jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/1.6', iso: 280, focalLength: '23mm' },
   },
   {
     id: 35,
@@ -125,6 +139,7 @@ export const portfolioItems = [
     description: 'Historic cobblestone courtyard with Georgian architecture on a rainy Dublin day.',
     src: `${IMAGE_BASE}/IMG_20251207_130739.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2.5', iso: 67, focalLength: '120mm' },
   },
 
   // Atmosphere
@@ -135,6 +150,7 @@ export const portfolioItems = [
     description: 'Surreal crimson fog engulfs a seaside venue, neon lights bleeding through the mist.',
     src: `${IMAGE_BASE}/IMG_20250216_023741.jpg`,
     location: 'Ankara, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/20s', aperture: 'f/1.6', iso: 2138, focalLength: '23mm' },
   },
   {
     id: 13,
@@ -143,6 +159,7 @@ export const portfolioItems = [
     description: 'A full moon rises over silhouetted rooftops and bare winter branches.',
     src: `${IMAGE_BASE}/IMG_20260204_223111.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/5s', aperture: 'f/2.5', iso: 4529, focalLength: '120mm' },
   },
   {
     id: 14,
@@ -151,6 +168,7 @@ export const portfolioItems = [
     description: 'Cozy cafe exterior on a rainy night, neon signs reflecting on wet pavement.',
     src: `${IMAGE_BASE}/IMG_20241215_180344%20(2).jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/35s', aperture: 'f/2.5', iso: 1714, focalLength: '120mm' },
   },
   {
     id: 15,
@@ -159,6 +177,7 @@ export const portfolioItems = [
     description: 'Victorian pub cascading with warm fairy lights on a winter evening.',
     src: `${IMAGE_BASE}/IMG_20260101_023025.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/1.8', iso: 685, focalLength: '75mm' },
   },
   {
     id: 16,
@@ -167,14 +186,16 @@ export const portfolioItems = [
     description: 'Golden hour light filtering through peak autumn foliage.',
     src: `${IMAGE_BASE}/IMG_20251104_160743.jpg`,
     location: 'Ankara, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/480s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
   {
     id: 28,
     title: 'Hibernia & Crescent',
     category: 'Atmosphere',
     description: 'The Hibernia statue atop the GPO stands silhouetted as a crescent moon rises over Dublin.',
-    src: `${IMAGE_BASE}/IMG_20260221_195136.jpg`,
+    src: `${IMAGE_BASE}/IMG_20260221_181420.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2.5', iso: 1117, focalLength: '120mm' },
   },
   {
     id: 30,
@@ -183,6 +204,7 @@ export const portfolioItems = [
     description: 'Romantic rainy street with cafe seating and warm decorative lights reflecting on wet pavement.',
     src: `${IMAGE_BASE}/IMG_20241121_184929.jpg`,
     location: 'Antalya, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/50s', aperture: 'f/2.5', iso: 320, focalLength: '120mm' },
   },
 
   // Travel
@@ -193,6 +215,7 @@ export const portfolioItems = [
     description: 'Aerial view of crystal-clear Mediterranean waters meeting golden sand.',
     src: `${IMAGE_BASE}/IMG_20240505_205020.jpg`,
     location: 'Fethiye, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/1250s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
   {
     id: 18,
@@ -201,6 +224,7 @@ export const portfolioItems = [
     description: 'Warm sunset over a coastal town with mountains fading into the horizon.',
     src: `${IMAGE_BASE}/IMG_20251005_182530%202.jpg`,
     location: 'Zonguldak, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/210s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
   {
     id: 19,
@@ -209,6 +233,7 @@ export const portfolioItems = [
     description: 'Silhouetted yacht against a blazing orange sunset over calm waters.',
     src: `${IMAGE_BASE}/IMG_20240501_193920.jpg`,
     location: 'Fethiye, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/850s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
   {
     id: 20,
@@ -217,6 +242,7 @@ export const portfolioItems = [
     description: 'Istanbul\'s iconic Kiz Kulesi standing guard over the Bosphorus.',
     src: `${IMAGE_BASE}/IMG_20250412_115836.jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/320s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
   {
     id: 31,
@@ -225,6 +251,7 @@ export const portfolioItems = [
     description: 'Expansive view of İstanbul with ferries crossing the Golden Horn and mosques dotting the skyline.',
     src: `${IMAGE_BASE}/IMG_20240909_113731.jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/1150s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
 
   // Street Life
@@ -235,6 +262,7 @@ export const portfolioItems = [
     description: 'Candid moment of a transaction at a Turkish street food kiosk.',
     src: `${IMAGE_BASE}/IMG_20241125_180007%20(1).jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2.5', iso: 162, focalLength: '120mm' },
   },
   {
     id: 22,
@@ -243,6 +271,7 @@ export const portfolioItems = [
     description: 'Warm light spilling from a traditional Irish pub onto the evening crowd.',
     src: `${IMAGE_BASE}/IMG_20251213_162016%20(1).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/1.8', iso: 117, focalLength: '75mm' },
   },
   {
     id: 23,
@@ -251,6 +280,7 @@ export const portfolioItems = [
     description: 'Vibrant nightlife scene outside Papillon Pub with warm amber glow.',
     src: `${IMAGE_BASE}/IMG_20250517_233428.jpg`,
     location: 'Ankara, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/25s', aperture: 'f/1.8', iso: 1562, focalLength: '75mm' },
   },
   {
     id: 24,
@@ -259,6 +289,7 @@ export const portfolioItems = [
     description: 'Bustling pedestrian street with string lights and festive energy.',
     src: `${IMAGE_BASE}/IMG_20251213_162127%20(1).jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/1.6', iso: 102, focalLength: '23mm' },
   },
   {
     id: 25,
@@ -267,6 +298,7 @@ export const portfolioItems = [
     description: 'Urban street with tram tracks leading into the neon-lit night.',
     src: `${IMAGE_BASE}/IMG_20250206_015237.jpg`,
     location: 'Antalya, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/17s', aperture: 'f/2.5', iso: 1910, focalLength: '120mm' },
   },
   {
     id: 26,
@@ -275,6 +307,7 @@ export const portfolioItems = [
     description: 'Dublin\'s famous shopping street alive with Christmas decorations.',
     src: `${IMAGE_BASE}/IMG_20251213_162028.jpg`,
     location: 'Dublin, Ireland',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2.5', iso: 122, focalLength: '120mm' },
   },
   {
     id: 32,
@@ -283,6 +316,7 @@ export const portfolioItems = [
     description: 'A solo figure walks through a narrow alley toward the iconic Galata Tower.',
     src: `${IMAGE_BASE}/IMG_20240909_103726%20(1).jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/100s', aperture: 'f/2', iso: 80, focalLength: '23mm' },
   },
   {
     id: 33,
@@ -291,5 +325,6 @@ export const portfolioItems = [
     description: 'Overhead view of a narrow pedestrian street lined with cafes and outdoor seating.',
     src: `${IMAGE_BASE}/IMG_20240909_115244.jpg`,
     location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/2000s', aperture: 'f/2.5', iso: 50, focalLength: '120mm' },
   },
 ];
