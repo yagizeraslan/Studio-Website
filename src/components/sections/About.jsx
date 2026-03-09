@@ -19,9 +19,15 @@ export default function About() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Portrait placeholder */}
+          {/* Portrait */}
           <ScrollReveal>
-            <div className="aspect-[3/4] bg-gradient-to-br from-stone-800/50 via-neutral-800/30 to-stone-900/50 border border-studio-border" />
+            <div className="aspect-[1/1] overflow-hidden">
+              <img
+                src="https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/main/Photography/Studio/portrait.jpg"
+                alt="Yagiz Eraslan - Photographer"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </ScrollReveal>
 
           {/* Bio content */}

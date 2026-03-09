@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: 'Yagiz Eraslan',
   brand: 'YE STUDIO',
-  tagline: 'Nature & Landscape Photography',
+  tagline: 'Cinematic Urban Photography',
   email: 'yagizeraslan@gmail.com',
   bio: [
-    'I am a passionate photographer and videographer specializing in nature and landscape imagery. With an eye for light and composition, I strive to capture moments that reveal the extraordinary beauty found in the natural world.',
-    'Every project is an opportunity to tell a visual story — whether it\'s the golden hour over a mountain range, the quiet stillness of a forest, or the raw power of the ocean.',
+    'I am a photographer specializing in cinematic urban and night photography. My work captures the soul of cities after dark — where neon lights meet rain-soaked streets, and every corner tells a story.',
+    'From the historic lanes of Istanbul to the vibrant streets of Dublin, I seek out moments where light, shadow, and atmosphere converge to create images that feel like stills from a film.',
   ],
   stats: [
     { label: 'Years Experience', value: '5+' },
