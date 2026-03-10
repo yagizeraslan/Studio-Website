@@ -41,7 +41,7 @@ export const presets = [
     previewImage: 'IMG_20240501_193920.jpg',
     storeUrl: '#',
     comparisons: [
-      { before: `${IMAGE_BASE}/web-optimized/IMG_20240501_193920-before.jpg`, after: `${IMAGE_BASE}/IMG_20240501_193920.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20240501_193920-before.jpg`, after: `${IMAGE_BASE}/IMG_20240501_193920.jpg` },
       { before: `${IMAGE_BASE}/IMG_20251104_160743-before.jpg`, after: `${IMAGE_BASE}/IMG_20251104_160743.jpg` },
       { before: `${IMAGE_BASE}/IMG_20251207_130739-before.jpg`, after: `${IMAGE_BASE}/IMG_20251207_130739.jpg` },
       { before: `${IMAGE_BASE}/IMG_20240906_220756-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg` },
