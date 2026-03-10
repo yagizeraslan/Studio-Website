@@ -28,7 +28,7 @@ export const presets = [
     comparisons: [
       { before: `${IMAGE_BASE}/IMG_20250404_215943-before.jpg`, after: `${IMAGE_BASE}/IMG_20250404_215943.jpg` },
       { before: `${IMAGE_BASE}/IMG_20250127_005616-before.jpg`, after: `${IMAGE_BASE}/IMG_20250127_005616.jpg` },
-      { before: `${IMAGE_BASE}/IMG_20251009_211246-before.jpg`, after: `${IMAGE_BASE}/IMG_20251009_211246.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20251009_211246-before.jpg`, after: `${IMAGE_BASE}/IMG_20251009_220623.jpg` },
     ],
   },
   {
@@ -43,7 +43,7 @@ export const presets = [
     comparisons: [
       { before: `${IMAGE_BASE}/IMG_20251104_160743-before.jpg`, after: `${IMAGE_BASE}/IMG_20251104_160743.jpg` },
       { before: `${IMAGE_BASE}/IMG_20251207_130739-before.jpg`, after: `${IMAGE_BASE}/IMG_20251207_130739.jpg` },
-      { before: `${IMAGE_BASE}/IMG_20240906_220756-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_220756.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20240906_220756-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg` },
     ],
   },
   {
@@ -58,7 +58,7 @@ export const presets = [
     storeUrl: '#',
     comparisons: [
       { before: `${IMAGE_BASE}/IMG_20240906_223937-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_223937.jpg` },
-      { before: `${IMAGE_BASE}/IMG_20241215_180344-before.jpg`, after: `${IMAGE_BASE}/IMG_20241215_180344.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20241215_180344-before.jpg`, after: `${IMAGE_BASE}/IMG_20241215_180344%20(2).jpg` },
       { before: `${IMAGE_BASE}/IMG_20260210_185551-before.jpg`, after: `${IMAGE_BASE}/IMG_20260210_185551%20(2).jpg` },
       { before: `${IMAGE_BASE}/IMG_20251206_215631-before.jpg`, after: `${IMAGE_BASE}/IMG_20251206_215631.jpg` },
     ],

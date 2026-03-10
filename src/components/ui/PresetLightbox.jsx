@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight, Check, ExternalLink } from 'lucide-react'
 
 export default function PresetLightbox({ preset, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const [sliderPosition, setSliderPosition] = useState(70);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function PresetLightbox({ preset, onClose }) {
 
   // Reset slider when changing comparison
   useEffect(() => {
-    setSliderPosition(50);
+    setSliderPosition(70);
   }, [currentIndex]);
 
   if (!preset) return null;
@@ -153,7 +153,7 @@ export default function PresetLightbox({ preset, onClose }) {
 
                 {/* Slider handle */}
                 <div
-                  className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-10"
+                  className="absolute top-0 bottom-0 w-px bg-white/80 cursor-ew-resize z-10"
                   style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
                   onMouseDown={handleMouseDown}
                   onTouchStart={() => {}}
