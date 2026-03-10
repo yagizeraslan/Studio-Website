@@ -27,20 +27,21 @@ export default function GalleryGrid({ items, onSelect }) {
           onClick={() => onSelect(item)}
           className="group relative w-full overflow-hidden bg-studio-surface border-none cursor-pointer p-0 block mb-4"
         >
-          {/* Loading skeleton */}
+          {/* Loading skeleton - with min height so masonry works */}
           {!loadedImages[item.id] && (
-            <div className="absolute inset-0 bg-studio-surface animate-pulse" />
+            <div className="absolute inset-0 bg-studio-surface animate-pulse min-h-[200px]" />
           )}
 
-          {/* Actual image */}
+          {/* Actual image - first 6 load eagerly, rest lazy */}
           <img
             src={item.src}
             alt={item.title}
-            loading="lazy"
+            loading={items.indexOf(item) < 6 ? 'eager' : 'lazy'}
             onLoad={() => handleImageLoad(item.id)}
             className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
               loadedImages[item.id] ? 'opacity-100' : 'opacity-0'
             }`}
+            style={{ minHeight: loadedImages[item.id] ? 'auto' : '200px' }}
           />
 
           {/* Hover overlay */}
