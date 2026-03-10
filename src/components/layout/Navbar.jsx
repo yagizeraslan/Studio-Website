@@ -34,6 +34,7 @@ export default function Navbar() {
   };
 
   return (
+    <>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
@@ -80,28 +81,42 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile overlay */}
+    </nav>
+
+      {/* Mobile overlay - outside nav to avoid positioning issues */}
       <div
-        className={`fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center gap-10 transition-all duration-500 md:hidden ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}
       >
-        {navLinks.map((link) => (
+        {/* Close button */}
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-6 right-6 text-studio-heading bg-transparent border-none cursor-pointer"
+          aria-label="Close menu"
+        >
+          <X size={28} />
+        </button>
+
+        {navLinks.map((link, index) => (
           <button
             key={link.id}
             onClick={() => handleClick(link.id)}
-            className={`font-display text-3xl tracking-wider uppercase transition-colors duration-300 bg-transparent border-none cursor-pointer ${
+            className={`font-display text-3xl tracking-wider uppercase transition-all duration-300 bg-transparent border-none cursor-pointer ${
               activeSection === link.id
                 ? 'text-studio-accent'
                 : 'text-studio-heading hover:text-studio-accent'
             }`}
+            style={{
+              animationDelay: menuOpen ? `${index * 100}ms` : '0ms',
+            }}
           >
             {link.label}
           </button>
         ))}
       </div>
-    </nav>
+    </>
   );
 }

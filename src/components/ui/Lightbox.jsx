@@ -162,15 +162,27 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
                   className="animate-slideDown opacity-0"
                   style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
                 >
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <Camera size={16} className="text-studio-accent" />
-                    <span className="text-white text-sm">{item.exif.camera}</span>
+                  <div className="flex items-center justify-center gap-2.5 mb-5">
+                    <Camera size={20} className="text-studio-accent" />
+                    <span className="text-white text-lg">{item.exif.camera}</span>
                   </div>
-                  <div className="flex items-center justify-center gap-4 text-sm text-white/70">
-                    <span>{item.exif.shutter}</span>
-                    <span>{item.exif.aperture}</span>
-                    <span>ISO {item.exif.iso}</span>
-                    <span>{item.exif.focalLength}</span>
+                  <div className="grid grid-cols-2 gap-4 text-base">
+                    <div className="flex items-center justify-center gap-2">
+                      <Timer size={18} className="text-studio-accent/70" />
+                      <span className="text-white/70">{item.exif.shutter}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Aperture size={18} className="text-studio-accent/70" />
+                      <span className="text-white/70">{item.exif.aperture}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Sun size={18} className="text-studio-accent/70" />
+                      <span className="text-white/70">ISO {item.exif.iso}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Focus size={18} className="text-studio-accent/70" />
+                      <span className="text-white/70">{item.exif.focalLength}</span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -232,28 +244,28 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
           {/* EXIF Data */}
           {item.exif && (
             <div
-              className="space-y-4 animate-slideDown opacity-0"
+              className="space-y-5 animate-slideDown opacity-0"
               style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
             >
               <div className="flex items-center gap-3">
-                <Camera size={18} className="text-studio-accent" />
-                <span className="text-studio-heading text-base">{item.exif.camera}</span>
+                <Camera size={22} className="text-studio-accent" />
+                <span className="text-studio-heading text-lg">{item.exif.camera}</span>
               </div>
-              <div className="grid grid-cols-2 gap-4 text-base">
-                <div className="flex items-center gap-2.5">
-                  <Timer size={16} className="text-studio-accent/70" />
+              <div className="grid grid-cols-2 gap-5 text-lg">
+                <div className="flex items-center gap-3">
+                  <Timer size={20} className="text-studio-accent/70" />
                   <span className="text-studio-body">{item.exif.shutter}</span>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <Aperture size={16} className="text-studio-accent/70" />
+                <div className="flex items-center gap-3">
+                  <Aperture size={20} className="text-studio-accent/70" />
                   <span className="text-studio-body">{item.exif.aperture}</span>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <Sun size={16} className="text-studio-accent/70" />
+                <div className="flex items-center gap-3">
+                  <Sun size={20} className="text-studio-accent/70" />
                   <span className="text-studio-body">ISO {item.exif.iso}</span>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <Focus size={16} className="text-studio-accent/70" />
+                <div className="flex items-center gap-3">
+                  <Focus size={20} className="text-studio-accent/70" />
                   <span className="text-studio-body">{item.exif.focalLength}</span>
                 </div>
               </div>
