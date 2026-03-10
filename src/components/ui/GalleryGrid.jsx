@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { MapPin } from 'lucide-react';
 
@@ -9,12 +8,6 @@ const breakpointColumns = {
 };
 
 export default function GalleryGrid({ items, onSelect }) {
-  const [loadedImages, setLoadedImages] = useState({});
-
-  const handleImageLoad = (id) => {
-    setLoadedImages((prev) => ({ ...prev, [id]: true }));
-  };
-
   return (
     <Masonry
       breakpointCols={breakpointColumns}
@@ -27,21 +20,12 @@ export default function GalleryGrid({ items, onSelect }) {
           onClick={() => onSelect(item)}
           className="group relative w-full overflow-hidden bg-studio-surface border-none cursor-pointer p-0 block mb-4"
         >
-          {/* Loading skeleton - with min height so masonry works */}
-          {!loadedImages[item.id] && (
-            <div className="absolute inset-0 bg-studio-surface animate-pulse min-h-[200px]" />
-          )}
-
-          {/* Actual image - first 6 load eagerly, rest lazy */}
+          {/* Image with lazy loading and fade-in */}
           <img
             src={item.src}
             alt={item.title}
-            loading={items.indexOf(item) < 6 ? 'eager' : 'lazy'}
-            onLoad={() => handleImageLoad(item.id)}
-            className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
-              loadedImages[item.id] ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ minHeight: loadedImages[item.id] ? 'auto' : '200px' }}
+            loading={items.indexOf(item) < 8 ? 'eager' : 'lazy'}
+            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 animate-fadeIn"
           />
 
           {/* Hover overlay */}

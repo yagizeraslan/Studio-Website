@@ -53,9 +53,7 @@ export default function Portfolio() {
 
       {/* Gallery - full width edge to edge */}
       <div className="px-4 mt-8">
-        <ScrollReveal delay={200}>
-          <GalleryGrid items={filtered} onSelect={setLightboxItem} />
-        </ScrollReveal>
+        <GalleryGrid items={filtered} onSelect={setLightboxItem} />
       </div>
 
       {lightboxItem && (
