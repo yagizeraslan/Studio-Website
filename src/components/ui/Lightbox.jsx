@@ -114,7 +114,7 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
       };
     }
 
-    if (animationPhase === 'flying' || animationPhase === 'complete') {
+    if (animationPhase === 'flying') {
       return {
         position: 'fixed',
         left: targetRect.left,
@@ -123,6 +123,19 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
         height: targetRect.height,
         zIndex: 110,
         transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+        borderRadius: '0px',
+      };
+    }
+
+    if (animationPhase === 'complete') {
+      return {
+        position: 'fixed',
+        left: targetRect.left,
+        top: targetRect.top,
+        width: targetRect.width,
+        height: targetRect.height,
+        zIndex: 1, // Lower z-index so UI elements appear on top
+        transition: 'none',
         borderRadius: '0px',
       };
     }

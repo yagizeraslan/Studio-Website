@@ -121,7 +121,7 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
       };
     }
 
-    if (animationPhase === 'flying' || animationPhase === 'complete') {
+    if (animationPhase === 'flying') {
       return {
         position: 'fixed',
         top: targetRect.top,
@@ -130,6 +130,18 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
         height: targetRect.height,
         zIndex: 110,
         transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+      };
+    }
+
+    if (animationPhase === 'complete') {
+      return {
+        position: 'fixed',
+        top: targetRect.top,
+        left: targetRect.left,
+        width: targetRect.width,
+        height: targetRect.height,
+        zIndex: 1, // Lower z-index so UI elements appear on top
+        transition: 'none',
       };
     }
 
@@ -148,7 +160,9 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
     return {};
   };
 
-  const showFlyingImage = startRect && targetRect;
+  // Hide flying image when complete - the Before/After slider needs to be fully visible
+  // Show during initial, flying, and closing phases only
+  const showFlyingImage = startRect && targetRect && (animationPhase === 'initial' || animationPhase === 'flying' || animationPhase === 'closing');
 
   return (
     <div
