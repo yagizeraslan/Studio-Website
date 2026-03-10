@@ -1,3 +1,5 @@
+const IMAGE_BASE = 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/main/Photography/Studio';
+
 export const presets = [
   {
     id: 'cinematic-urban',
@@ -8,6 +10,11 @@ export const presets = [
     gradient: 'from-cyan-900/60 via-orange-900/40 to-slate-900/60',
     previewImage: 'IMG_20260210_185551%20(2).jpg',
     storeUrl: '#',
+    comparisons: [
+      { before: `${IMAGE_BASE}/IMG_20260210_185551-before.jpg`, after: `${IMAGE_BASE}/IMG_20260210_185551%20(2).jpg` },
+      { before: `${IMAGE_BASE}/IMG_20240906_223937-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_223937.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20251206_215631-before.jpg`, after: `${IMAGE_BASE}/IMG_20251206_215631.jpg` },
+    ],
   },
   {
     id: 'moody-nights',
@@ -18,6 +25,11 @@ export const presets = [
     gradient: 'from-blue-900/60 via-slate-800/40 to-indigo-900/60',
     previewImage: 'IMG_20250404_215943.jpg',
     storeUrl: '#',
+    comparisons: [
+      { before: `${IMAGE_BASE}/IMG_20250404_215943-before.jpg`, after: `${IMAGE_BASE}/IMG_20250404_215943.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20250127_005616-before.jpg`, after: `${IMAGE_BASE}/IMG_20250127_005616.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20251009_211246-before.jpg`, after: `${IMAGE_BASE}/IMG_20251009_211246.jpg` },
+    ],
   },
   {
     id: 'golden-hour',
@@ -28,6 +40,11 @@ export const presets = [
     gradient: 'from-amber-900/60 via-orange-800/40 to-yellow-900/60',
     previewImage: 'IMG_20240501_193920.jpg',
     storeUrl: '#',
+    comparisons: [
+      { before: `${IMAGE_BASE}/IMG_20251104_160743-before.jpg`, after: `${IMAGE_BASE}/IMG_20251104_160743.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20251207_130739-before.jpg`, after: `${IMAGE_BASE}/IMG_20251207_130739.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20240906_220756-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_220756.jpg` },
+    ],
   },
   {
     id: 'complete-bundle',
@@ -39,5 +56,11 @@ export const presets = [
     gradient: 'from-studio-accent/40 via-cyan-900/30 to-orange-900/40',
     previewImage: 'IMG_20240906_223937.jpg',
     storeUrl: '#',
+    comparisons: [
+      { before: `${IMAGE_BASE}/IMG_20240906_223937-before.jpg`, after: `${IMAGE_BASE}/IMG_20240906_223937.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20241215_180344-before.jpg`, after: `${IMAGE_BASE}/IMG_20241215_180344.jpg` },
+      { before: `${IMAGE_BASE}/IMG_20260210_185551-before.jpg`, after: `${IMAGE_BASE}/IMG_20260210_185551%20(2).jpg` },
+      { before: `${IMAGE_BASE}/IMG_20251206_215631-before.jpg`, after: `${IMAGE_BASE}/IMG_20251206_215631.jpg` },
+    ],
   },
 ];

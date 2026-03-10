@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { Mail, MapPin, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Instagram, Youtube, Linkedin, AlertCircle, CheckCircle } from 'lucide-react';
 import { siteConfig } from '../../data/siteConfig';
 import ScrollReveal from '../ui/ScrollReveal';
+
+// Web3Forms access key from environment variable
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const socialLinks = [
   { icon: Instagram, href: siteConfig.social.instagram, label: 'Instagram' },
@@ -9,35 +12,101 @@ const socialLinks = [
   { icon: Linkedin, href: siteConfig.social.linkedin, label: 'LinkedIn' },
 ];
 
-const serviceOptions = [
-  'Nature Photography',
-  'Landscape Photography',
-  'Cinematic Videography',
-  'Photo & Video Bundle',
-  'Custom Project',
+// Allowed email domains (whitelist)
+const allowedDomains = [
+  'gmail.com', 'googlemail.com',
+  'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
+  'yahoo.com', 'yahoo.co.uk', 'yahoo.fr', 'yahoo.de',
+  'icloud.com', 'me.com', 'mac.com',
+  'protonmail.com', 'proton.me',
+  'aol.com',
+  'zoho.com',
+  'mail.com',
+  'gmx.com', 'gmx.net',
+  'yandex.com', 'yandex.ru',
+  'tutanota.com',
+  'fastmail.com',
 ];
+
+// Check if message contains URLs
+const containsUrl = (text) => {
+  const urlPattern = /(https?:\/\/|www\.|\.com\/|\.net\/|\.org\/|\.io\/|\.co\/|bit\.ly|tinyurl|t\.co)/i;
+  return urlPattern.test(text);
+};
+
+// Check if email domain is allowed
+const isEmailAllowed = (email) => {
+  const domain = email.split('@')[1]?.toLowerCase();
+  return domain && allowedDomains.includes(domain);
+};
 
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    service: '',
     message: '',
   });
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // Clear error when user starts typing
+    if (status.type === 'error') setStatus({ type: '', message: '' });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `${form.service || 'Inquiry'} — ${form.name}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+
+    // Validate email domain
+    if (!isEmailAllowed(form.email)) {
+      setStatus({
+        type: 'error',
+        message: 'Please use a valid email from a common provider (Gmail, Outlook, Yahoo, etc.)'
+      });
+      return;
+    }
+
+    // Check for URLs in message
+    if (containsUrl(form.message)) {
+      setStatus({
+        type: 'error',
+        message: 'Links are not allowed in the message for security reasons.'
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          botcheck: '', // Honeypot - should be empty
+          from_name: 'YE Studio Contact Form',
+          subject: `New inquiry from ${form.name}`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' });
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      }
+    } catch {
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -109,6 +178,14 @@ export default function Contact() {
           {/* Form */}
           <ScrollReveal delay={200}>
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot field - hidden from users, bots will fill it */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                style={{ display: 'none' }}
+              />
+
               <input
                 type="text"
                 name="name"
@@ -127,36 +204,40 @@ export default function Contact() {
                 required
                 className={inputClass}
               />
-              <select
-                name="service"
-                value={form.service}
-                onChange={handleChange}
-                required
-                className={`${inputClass} ${!form.service ? 'text-studio-body/50' : ''}`}
-              >
-                <option value="" disabled>
-                  Select a Service
-                </option>
-                {serviceOptions.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
               <textarea
                 name="message"
-                placeholder="Tell me about your project..."
+                placeholder="Your message..."
                 value={form.message}
                 onChange={handleChange}
                 rows={5}
                 required
                 className={`${inputClass} resize-none`}
               />
+
+              {/* Status message */}
+              {status.message && (
+                <div
+                  className={`flex items-center gap-2 text-sm p-3 ${
+                    status.type === 'error'
+                      ? 'bg-red-500/10 text-red-400 border border-red-500/30'
+                      : 'bg-green-500/10 text-green-400 border border-green-500/30'
+                  }`}
+                >
+                  {status.type === 'error' ? (
+                    <AlertCircle size={16} />
+                  ) : (
+                    <CheckCircle size={16} />
+                  )}
+                  {status.message}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-studio-accent text-black py-3 text-sm tracking-widest uppercase font-medium hover:bg-studio-accent-hover transition-colors border-none cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full bg-studio-accent text-black py-3 text-sm tracking-widest uppercase font-medium hover:bg-studio-accent-hover transition-colors border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </ScrollReveal>

@@ -1,10 +1,14 @@
-import { Check, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { Check, ExternalLink, Eye } from 'lucide-react';
 import { presets } from '../../data/presets';
 import ScrollReveal from '../ui/ScrollReveal';
+import PresetLightbox from '../ui/PresetLightbox';
 
 const IMAGE_BASE = 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/main/Photography/Studio';
 
 export default function Presets() {
+  const [selectedPreset, setSelectedPreset] = useState(null);
+
   return (
     <section id="presets" className="py-24 px-6 bg-studio-surface">
       <div className="max-w-7xl mx-auto">
@@ -40,15 +44,26 @@ export default function Presets() {
                   </span>
                 )}
 
-                {/* Preview image */}
-                <div className="aspect-[4/3] relative overflow-hidden">
+                {/* Preview image - clickable */}
+                <button
+                  onClick={() => setSelectedPreset(preset)}
+                  className="aspect-[4/3] relative overflow-hidden w-full border-none p-0 cursor-pointer"
+                >
                   <img
                     src={`${IMAGE_BASE}/${preset.previewImage}`}
                     alt={preset.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${preset.gradient} opacity-40`} />
-                </div>
+
+                  {/* Preview overlay */}
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-2 text-white text-sm tracking-wider uppercase">
+                      <Eye size={18} />
+                      Preview
+                    </div>
+                  </div>
+                </button>
 
                 {/* Content */}
                 <div className="flex flex-col flex-1 p-8 bg-studio-surface">
@@ -94,6 +109,13 @@ export default function Presets() {
           ))}
         </div>
       </div>
+
+      {selectedPreset && (
+        <PresetLightbox
+          preset={selectedPreset}
+          onClose={() => setSelectedPreset(null)}
+        />
+      )}
     </section>
   );
 }
