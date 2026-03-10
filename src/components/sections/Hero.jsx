@@ -36,12 +36,18 @@ export default function Hero() {
           Capturing the soul of cities after dark — where neon meets rain,
           and every street tells a story.
         </p>
-        <div className="animate-fade-in-up" style={{ animationDelay: '450ms' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
           <a
-            href="#portfolio"
-            className="inline-block border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
+            href="#photography"
+            className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
           >
-            View Portfolio
+            Photography
+          </a>
+          <a
+            href="#videography"
+            className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
+          >
+            Videography
           </a>
         </div>
       </div>

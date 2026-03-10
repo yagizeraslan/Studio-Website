@@ -27,7 +27,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-24">
+    <section id="photography" className="py-24">
       {/* Header - centered with max-width */}
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal>
@@ -38,7 +38,10 @@ export default function Portfolio() {
             <h2 className="font-display text-studio-heading text-4xl sm:text-5xl mb-4">
               Selected Works
             </h2>
-            <div className="gold-line max-w-xs mx-auto" />
+            <div className="gold-line max-w-xs mx-auto mb-4" />
+            <p className="text-studio-body/60 text-sm tracking-wide">
+              All images captured on Xiaomi 14 Ultra
+            </p>
           </div>
         </ScrollReveal>
 

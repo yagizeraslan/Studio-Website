@@ -1,4 +1,3 @@
-import { Camera } from 'lucide-react';
 import { siteConfig } from '../../data/siteConfig';
 import ScrollReveal from '../ui/ScrollReveal';
 
@@ -42,32 +41,6 @@ export default function About() {
                 </p>
               ))}
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 py-8 border-y border-studio-border mb-8">
-                {siteConfig.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="font-display text-studio-heading text-3xl mb-1">
-                      {stat.value}
-                    </p>
-                    <p className="text-studio-body text-xs tracking-wider uppercase">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Equipment */}
-              <h3 className="font-display text-studio-heading text-lg mb-4">
-                Equipment
-              </h3>
-              <ul className="space-y-2">
-                {siteConfig.equipment.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-studio-body">
-                    <Camera size={14} className="text-studio-accent shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
           </ScrollReveal>
         </div>

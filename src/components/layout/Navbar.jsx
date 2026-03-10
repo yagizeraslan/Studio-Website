@@ -3,7 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 
 const navLinks = [
-  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'photography', label: 'Photography' },
+  { id: 'videography', label: 'Videography' },
   { id: 'presets', label: 'Presets' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
