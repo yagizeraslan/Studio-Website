@@ -206,22 +206,22 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
         {/* Before/After Slider */}
         <div className="flex-1 flex flex-col items-center w-full lg:w-auto">
           <div className="relative w-full max-w-xl flex items-center">
-            {/* Prev button */}
+            {/* Prev button - inside image on mobile, outside on desktop */}
             {comparisons.length > 1 && currentIndex > 0 && (
               <button
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                className="absolute -left-12 lg:-left-14 top-1/2 -translate-y-1/2 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+                className="absolute left-2 lg:-left-14 top-1/2 -translate-y-1/2 text-white lg:text-studio-body hover:text-studio-heading transition-colors bg-black/50 lg:bg-transparent rounded-full p-1 lg:p-0 border-none cursor-pointer z-20"
                 aria-label="Previous"
               >
                 <ChevronLeft size={28} />
               </button>
             )}
 
-            {/* Next button */}
+            {/* Next button - inside image on mobile, outside on desktop */}
             {comparisons.length > 1 && currentIndex < comparisons.length - 1 && (
               <button
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="absolute -right-12 lg:-right-14 top-1/2 -translate-y-1/2 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+                className="absolute right-2 lg:-right-14 top-1/2 -translate-y-1/2 text-white lg:text-studio-body hover:text-studio-heading transition-colors bg-black/50 lg:bg-transparent rounded-full p-1 lg:p-0 border-none cursor-pointer z-20"
                 aria-label="Next"
               >
                 <ChevronRight size={28} />
