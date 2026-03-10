@@ -8,6 +8,7 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
   const [imageDimensions, setImageDimensions] = useState(null);
   const containerRef = useRef(null);
   const startRectRef = useRef(initialRect);
+  const initialItemIdRef = useRef(item?.id); // Track originally clicked image
 
   // Preload image to get natural dimensions
   useLayoutEffect(() => {
@@ -172,9 +173,10 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
           className="overflow-hidden"
         >
           <img
+            key={animationPhase === 'complete' ? item.id : 'flying'}
             src={item.src}
             alt={item.title}
-            className="w-full h-full object-contain"
+            className={`w-full h-full object-contain ${animationPhase === 'complete' && item.id !== initialItemIdRef.current ? 'animate-fadeIn' : ''}`}
           />
         </div>
       )}
