@@ -1,11 +1,38 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Check, ExternalLink } from 'lucide-react';
 
-export default function PresetLightbox({ preset, onClose }) {
+export default function PresetLightbox({ preset, onClose, initialRect }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(70);
   const [isDragging, setIsDragging] = useState(false);
+  const [animationPhase, setAnimationPhase] = useState('initial'); // 'initial' | 'flying' | 'complete' | 'closing'
   const containerRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const [targetRect, setTargetRect] = useState(null);
+  const startRectRef = useRef(initialRect);
+
+  // Calculate target position after mount
+  useLayoutEffect(() => {
+    if (imageContainerRef.current && animationPhase === 'initial') {
+      const rect = imageContainerRef.current.getBoundingClientRect();
+      setTargetRect(rect);
+      // Start flying animation after a frame
+      requestAnimationFrame(() => {
+        setAnimationPhase('flying');
+        // Complete animation after transition
+        setTimeout(() => setAnimationPhase('complete'), 400);
+      });
+    }
+  }, []);
+
+  const handleClose = () => {
+    if (startRectRef.current && animationPhase === 'complete') {
+      setAnimationPhase('closing');
+      setTimeout(() => onClose(), 350);
+    } else {
+      onClose();
+    }
+  };
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -14,13 +41,13 @@ export default function PresetLightbox({ preset, onClose }) {
 
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
       if (e.key === 'ArrowLeft') handlePrev();
       if (e.key === 'ArrowRight') handleNext();
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [onClose, currentIndex]);
+  }, [currentIndex, animationPhase]);
 
   // Reset slider when changing comparison
   useEffect(() => {
@@ -76,15 +103,80 @@ export default function PresetLightbox({ preset, onClose }) {
     };
   }, [isDragging]);
 
+  // Calculate flying image styles
+  const startRect = startRectRef.current;
+
+  const getFlyingImageStyle = () => {
+    if (!startRect || !targetRect) return {};
+
+    if (animationPhase === 'initial') {
+      return {
+        position: 'fixed',
+        top: startRect.top,
+        left: startRect.left,
+        width: startRect.width,
+        height: startRect.height,
+        zIndex: 110,
+        transition: 'none',
+      };
+    }
+
+    if (animationPhase === 'flying' || animationPhase === 'complete') {
+      return {
+        position: 'fixed',
+        top: targetRect.top,
+        left: targetRect.left,
+        width: targetRect.width,
+        height: targetRect.height,
+        zIndex: 110,
+        transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+      };
+    }
+
+    if (animationPhase === 'closing') {
+      return {
+        position: 'fixed',
+        top: startRect.top,
+        left: startRect.left,
+        width: startRect.width,
+        height: startRect.height,
+        zIndex: 110,
+        transition: 'all 0.35s cubic-bezier(0.32, 0.72, 0, 1)',
+      };
+    }
+
+    return {};
+  };
+
+  const showFlyingImage = startRect && targetRect;
+
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center animate-fadeIn"
-      onClick={onClose}
+      className={`fixed inset-0 z-[100] flex items-center justify-center transition-colors duration-300 ${
+        animationPhase === 'initial' || animationPhase === 'closing' ? 'bg-black/0' : 'bg-black/95'
+      }`}
+      onClick={handleClose}
     >
+      {/* Flying image overlay */}
+      {showFlyingImage && currentComparison && (
+        <div
+          style={getFlyingImageStyle()}
+          className="overflow-hidden"
+        >
+          <img
+            src={currentComparison.after}
+            alt={preset.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
       {/* Close button */}
       <button
-        onClick={onClose}
-        className="absolute top-6 right-6 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+        onClick={handleClose}
+        className={`absolute top-6 right-6 text-studio-body hover:text-studio-heading transition-all bg-transparent border-none cursor-pointer z-10 ${
+          animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+        }`}
         aria-label="Close"
       >
         <X size={28} />
@@ -92,7 +184,9 @@ export default function PresetLightbox({ preset, onClose }) {
 
       {/* Content */}
       <div
-        className="w-full max-w-6xl mx-4 max-h-[90vh] flex flex-col lg:flex-row items-center lg:items-stretch gap-6 lg:gap-8"
+        className={`w-full max-w-6xl mx-4 max-h-[90vh] flex flex-col lg:flex-row items-center lg:items-stretch gap-6 lg:gap-8 transition-opacity duration-300 ${
+          animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Before/After Slider */}
@@ -121,8 +215,11 @@ export default function PresetLightbox({ preset, onClose }) {
             )}
 
             <div
-              ref={containerRef}
-              className="relative w-full aspect-[3/4] overflow-hidden cursor-ew-resize select-none bg-studio-surface animate-fadeIn"
+              ref={(el) => {
+                containerRef.current = el;
+                imageContainerRef.current = el;
+              }}
+              className="relative w-full aspect-[3/4] overflow-hidden cursor-ew-resize select-none bg-studio-surface"
               onTouchMove={handleTouchMove}
             >
             {currentComparison && (
@@ -201,33 +298,33 @@ export default function PresetLightbox({ preset, onClose }) {
         <div className="hidden lg:flex w-80 flex-shrink-0 flex-col justify-center py-8">
           <p
             className="text-studio-accent text-sm tracking-[0.25em] uppercase mb-4 animate-slideDown opacity-0"
-            style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
           >
             Preset Pack
           </p>
 
           <h3
             className="font-display text-studio-heading text-4xl mb-4 animate-slideDown opacity-0"
-            style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
           >
             {preset.title}
           </h3>
 
           <p
             className="text-studio-body text-base leading-relaxed mb-6 animate-slideDown opacity-0"
-            style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
           >
             {preset.description}
           </p>
 
           <div
             className="w-16 h-px bg-studio-accent/50 mb-6 animate-scaleX origin-left opacity-0"
-            style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
           />
 
           <ul
             className="space-y-3 mb-8 animate-slideDown opacity-0"
-            style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '700ms', animationFillMode: 'forwards' }}
           >
             {preset.includes.map((item) => (
               <li key={item} className="flex items-start gap-3 text-sm">
@@ -239,7 +336,7 @@ export default function PresetLightbox({ preset, onClose }) {
 
           <div
             className="animate-slideDown opacity-0"
-            style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
+            style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
           >
             <p className="font-display text-studio-heading text-4xl mb-6">
               {preset.price}

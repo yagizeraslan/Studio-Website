@@ -1,9 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, MapPin, Camera, Aperture, Timer, Sun, Focus, ChevronDown } from 'lucide-react';
 
-export default function Lightbox({ item, items, onClose, onNavigate }) {
+export default function Lightbox({ item, items, onClose, onNavigate, initialRect }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [animationPhase, setAnimationPhase] = useState('initial'); // 'initial' | 'flying' | 'complete' | 'closing'
+  const [imageDimensions, setImageDimensions] = useState(null);
+  const containerRef = useRef(null);
+  const startRectRef = useRef(initialRect);
+
+  // Preload image to get natural dimensions
+  useLayoutEffect(() => {
+    if (!item?.src) return;
+
+    const img = new Image();
+    img.onload = () => {
+      setImageDimensions({ width: img.naturalWidth, height: img.naturalHeight });
+    };
+    img.src = item.src;
+  }, [item?.src]);
+
+  // Calculate target position and start animation
+  useLayoutEffect(() => {
+    if (containerRef.current && imageDimensions && animationPhase === 'initial') {
+      requestAnimationFrame(() => {
+        setAnimationPhase('flying');
+        setTimeout(() => setAnimationPhase('complete'), 400);
+      });
+    }
+  }, [imageDimensions, animationPhase]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -15,29 +40,138 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
     setShowDetails(false);
   }, [item.id]);
 
+  const handleClose = () => {
+    if (startRectRef.current && animationPhase === 'complete') {
+      setAnimationPhase('closing');
+      setTimeout(() => onClose(), 350);
+    } else {
+      onClose();
+    }
+  };
+
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
       if (e.key === 'ArrowLeft') onNavigate(-1);
       if (e.key === 'ArrowRight') onNavigate(1);
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [onClose, onNavigate]);
+  }, [onNavigate, animationPhase]);
 
   if (!item) return null;
 
   const currentIndex = items.findIndex((i) => i.id === item.id);
 
+  // Calculate the final image size maintaining aspect ratio
+  const getTargetImageRect = () => {
+    if (!containerRef.current || !imageDimensions) return null;
+
+    // Get the actual image element's position in the layout
+    const imgElement = containerRef.current.querySelector('img');
+    if (!imgElement) return null;
+
+    const containerRect = imgElement.parentElement.getBoundingClientRect();
+    const maxWidth = containerRect.width;
+    const maxHeight = window.innerHeight * 0.85; // max-h-[85vh]
+
+    const imgRatio = imageDimensions.width / imageDimensions.height;
+    let finalWidth, finalHeight;
+
+    if (maxWidth / maxHeight > imgRatio) {
+      // Height constrained
+      finalHeight = Math.min(maxHeight, imageDimensions.height);
+      finalWidth = finalHeight * imgRatio;
+    } else {
+      // Width constrained
+      finalWidth = Math.min(maxWidth, imageDimensions.width);
+      finalHeight = finalWidth / imgRatio;
+    }
+
+    // Position centered within the image container area
+    const left = containerRect.left + (containerRect.width - finalWidth) / 2;
+    const top = containerRect.top + (containerRect.height - finalHeight) / 2;
+
+    return { left, top, width: finalWidth, height: finalHeight };
+  };
+
+  const targetRect = getTargetImageRect();
+  const startRect = startRectRef.current;
+
+  // Calculate flying image styles using transform for smooth animation
+  const getFlyingImageStyle = () => {
+    if (!startRect || !targetRect) return { opacity: 0 };
+
+    if (animationPhase === 'initial') {
+      return {
+        position: 'fixed',
+        left: startRect.left,
+        top: startRect.top,
+        width: startRect.width,
+        height: startRect.height,
+        zIndex: 110,
+        borderRadius: '0px',
+      };
+    }
+
+    if (animationPhase === 'flying' || animationPhase === 'complete') {
+      return {
+        position: 'fixed',
+        left: targetRect.left,
+        top: targetRect.top,
+        width: targetRect.width,
+        height: targetRect.height,
+        zIndex: 110,
+        transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+        borderRadius: '0px',
+      };
+    }
+
+    if (animationPhase === 'closing') {
+      return {
+        position: 'fixed',
+        left: startRect.left,
+        top: startRect.top,
+        width: startRect.width,
+        height: startRect.height,
+        zIndex: 110,
+        transition: 'all 0.35s cubic-bezier(0.32, 0.72, 0, 1)',
+        borderRadius: '0px',
+      };
+    }
+
+    return {};
+  };
+
+  const showFlyingImage = startRect && targetRect;
+
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center"
-      onClick={onClose}
+      className={`fixed inset-0 z-[100] backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
+        animationPhase === 'initial' || animationPhase === 'closing' ? 'bg-black/0' : 'bg-black/95'
+      }`}
+      onClick={handleClose}
     >
+      {/* Flying image - this IS the main image, no swap/blink */}
+      {showFlyingImage && (
+        <div
+          style={getFlyingImageStyle()}
+          className="overflow-hidden"
+        >
+          <img
+            src={item.src}
+            alt={item.title}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
+
       {/* Close button */}
       <button
-        onClick={onClose}
-        className="absolute top-6 right-6 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+        onClick={handleClose}
+        className={`absolute top-6 right-6 text-studio-body hover:text-studio-heading transition-all bg-transparent border-none cursor-pointer z-10 ${
+          animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+        }`}
         aria-label="Close"
       >
         <X size={28} />
@@ -47,7 +181,9 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
       {currentIndex > 0 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNavigate(-1); }}
-          className="absolute left-4 md:left-8 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+          className={`absolute left-4 md:left-8 text-studio-body hover:text-studio-heading transition-all bg-transparent border-none cursor-pointer z-10 ${
+            animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+          }`}
           aria-label="Previous"
         >
           <ChevronLeft size={36} />
@@ -56,24 +192,20 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
 
       {/* Content */}
       <div
-        className="max-w-6xl w-full mx-4 md:mx-8 max-h-[90vh] flex flex-col md:flex-row items-center md:items-stretch gap-0 md:gap-6"
+        ref={containerRef}
+        className={`max-w-6xl w-full mx-4 md:mx-8 max-h-[90vh] flex flex-col md:flex-row items-center md:items-stretch gap-0 md:gap-6 transition-opacity duration-300 ${
+          animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Image container */}
+        {/* Image container - invisible placeholder for layout, flying image shows actual */}
         <div className="relative flex items-center justify-center flex-1 min-h-0">
-          {/* Loading skeleton */}
-          {!imageLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 border-2 border-studio-accent/30 border-t-studio-accent rounded-full animate-spin" />
-            </div>
-          )}
-
           <img
             key={item.id}
             src={item.src}
             alt={item.title}
             onLoad={() => setImageLoaded(true)}
-            className="max-h-[70vh] md:max-h-[85vh] max-w-full object-contain animate-fadeIn"
+            className="max-h-[70vh] md:max-h-[85vh] max-w-full object-contain invisible"
           />
         </div>
 
@@ -278,7 +410,9 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
       {currentIndex < items.length - 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNavigate(1); }}
-          className="absolute right-4 md:right-8 text-studio-body hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer z-10"
+          className={`absolute right-4 md:right-8 text-studio-body hover:text-studio-heading transition-all bg-transparent border-none cursor-pointer z-10 ${
+            animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+          }`}
           aria-label="Next"
         >
           <ChevronRight size={36} />
@@ -286,7 +420,9 @@ export default function Lightbox({ item, items, onClose, onNavigate }) {
       )}
 
       {/* Counter */}
-      <p className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 text-studio-body/50 text-xs md:text-sm">
+      <p className={`absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 text-studio-body/50 text-xs md:text-sm transition-opacity duration-300 ${
+        animationPhase === 'complete' ? 'opacity-100' : 'opacity-0'
+      }`}>
         {currentIndex + 1} / {items.length}
       </p>
     </div>

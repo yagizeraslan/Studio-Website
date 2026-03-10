@@ -8,6 +8,12 @@ import ScrollReveal from '../ui/ScrollReveal';
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxItem, setLightboxItem] = useState(null);
+  const [clickedRect, setClickedRect] = useState(null);
+
+  const handleImageSelect = (item, rect) => {
+    setClickedRect(rect);
+    setLightboxItem(item);
+  };
 
   const filtered = useMemo(
     () =>
@@ -56,7 +62,7 @@ export default function Portfolio() {
 
       {/* Gallery - full width edge to edge */}
       <div className="px-4 mt-8">
-        <GalleryGrid items={filtered} onSelect={setLightboxItem} />
+        <GalleryGrid items={filtered} onSelect={handleImageSelect} />
       </div>
 
       {lightboxItem && (
@@ -65,6 +71,7 @@ export default function Portfolio() {
           items={filtered}
           onClose={() => setLightboxItem(null)}
           onNavigate={handleNavigate}
+          initialRect={clickedRect}
         />
       )}
     </section>

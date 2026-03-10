@@ -8,6 +8,13 @@ const IMAGE_BASE = 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/m
 
 export default function Presets() {
   const [selectedPreset, setSelectedPreset] = useState(null);
+  const [clickedRect, setClickedRect] = useState(null);
+
+  const handlePresetClick = (preset, e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setClickedRect(rect);
+    setSelectedPreset(preset);
+  };
 
   return (
     <section id="presets" className="py-24 px-6 bg-studio-surface">
@@ -46,7 +53,7 @@ export default function Presets() {
 
                 {/* Preview image - clickable */}
                 <button
-                  onClick={() => setSelectedPreset(preset)}
+                  onClick={(e) => handlePresetClick(preset, e)}
                   className="aspect-[4/3] relative overflow-hidden w-full border-none p-0 cursor-pointer"
                 >
                   <img
@@ -114,6 +121,7 @@ export default function Presets() {
         <PresetLightbox
           preset={selectedPreset}
           onClose={() => setSelectedPreset(null)}
+          initialRect={clickedRect}
         />
       )}
     </section>

@@ -17,7 +17,10 @@ export default function GalleryGrid({ items, onSelect }) {
       {items.map((item) => (
         <button
           key={item.id}
-          onClick={() => onSelect(item)}
+          onClick={(e) => {
+            const rect = e.currentTarget.querySelector('img').getBoundingClientRect();
+            onSelect(item, rect);
+          }}
           className="group relative w-full overflow-hidden bg-studio-surface border-none cursor-pointer p-0 block mb-4"
         >
           {/* Image with lazy loading and fade-in */}
