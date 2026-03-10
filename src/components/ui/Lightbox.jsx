@@ -42,7 +42,13 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
   }, [item.id]);
 
   const handleClose = () => {
-    if (startRectRef.current && animationPhase === 'complete') {
+    if (animationPhase === 'complete') {
+      // Find current image's position in the gallery (not the original clicked one)
+      const galleryImg = document.querySelector(`#photography img[src="${item.src}"]`);
+      if (galleryImg) {
+        const rect = galleryImg.getBoundingClientRect();
+        startRectRef.current = rect; // Update return position to current image's location
+      }
       setAnimationPhase('closing');
       setTimeout(() => onClose(), 350);
     } else {
