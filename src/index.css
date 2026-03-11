@@ -88,6 +88,28 @@ html {
   }
 }
 
+@keyframes slideUpOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes scaleXReverse {
+  from {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out forwards;
 }
@@ -100,6 +122,14 @@ html {
   animation: slideUp 0.5s ease-out;
 }
 
+.animate-slideUpOut {
+  animation: slideUpOut 0.3s ease-out forwards;
+}
+
 .animate-scaleX {
   animation: scaleX 0.5s ease-out;
+}
+
+.animate-scaleXReverse {
+  animation: scaleXReverse 0.3s ease-out forwards;
 }

@@ -4,6 +4,7 @@ import { X, ChevronLeft, ChevronRight, MapPin, Camera, Aperture, Timer, Sun, Foc
 export default function Lightbox({ item, items, onClose, onNavigate, initialRect }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [isClosingDetails, setIsClosingDetails] = useState(false);
   const [animationPhase, setAnimationPhase] = useState('initial'); // 'initial' | 'flying' | 'complete' | 'closing'
   const [imageDimensions, setImageDimensions] = useState(null);
   const containerRef = useRef(null);
@@ -39,7 +40,16 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
   useEffect(() => {
     setImageLoaded(false);
     setShowDetails(false);
+    setIsClosingDetails(false);
   }, [item.id]);
+
+  const handleCloseDetails = () => {
+    setIsClosingDetails(true);
+    setTimeout(() => {
+      setShowDetails(false);
+      setIsClosingDetails(false);
+    }, 350);
+  };
 
   const handleClose = () => {
     if (animationPhase === 'complete') {
@@ -261,8 +271,10 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
         {/* Mobile: Full details overlay */}
         {showDetails && (
           <div
-            className="md:hidden absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-6 z-20"
-            onClick={() => setShowDetails(false)}
+            className={`md:hidden absolute inset-0 flex flex-col items-center justify-center p-6 z-20 transition-colors duration-300 ${
+              isClosingDetails ? 'bg-black/0' : 'bg-black/80'
+            }`}
+            onClick={handleCloseDetails}
           >
             <div
               className="max-w-sm text-center"
@@ -270,24 +282,39 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
             >
               {/* Category */}
               <p
-                className="text-studio-accent text-sm tracking-[0.25em] uppercase mb-3 animate-slideDown opacity-0"
-                style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}
+                className={`text-studio-accent text-sm tracking-[0.25em] uppercase mb-3 ${
+                  isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                }`}
+                style={{
+                  animationDelay: isClosingDetails ? '250ms' : '50ms',
+                  animationFillMode: 'forwards'
+                }}
               >
                 {item.category}
               </p>
 
               {/* Title */}
               <h3
-                className="font-display text-white text-3xl mb-4 animate-slideDown opacity-0"
-                style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
+                className={`font-display text-white text-3xl mb-4 ${
+                  isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                }`}
+                style={{
+                  animationDelay: isClosingDetails ? '200ms' : '100ms',
+                  animationFillMode: 'forwards'
+                }}
               >
                 {item.title}
               </h3>
 
               {/* Description */}
               <p
-                className="text-white/70 text-base leading-relaxed mb-5 animate-slideDown opacity-0"
-                style={{ animationDelay: '150ms', animationFillMode: 'forwards' }}
+                className={`text-white/70 text-base leading-relaxed mb-5 ${
+                  isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                }`}
+                style={{
+                  animationDelay: isClosingDetails ? '150ms' : '150ms',
+                  animationFillMode: 'forwards'
+                }}
               >
                 {item.description}
               </p>
@@ -295,8 +322,13 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
               {/* Location */}
               {item.location && (
                 <div
-                  className="flex items-center justify-center gap-2 text-white/60 text-sm mb-6 animate-slideDown opacity-0"
-                  style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
+                  className={`flex items-center justify-center gap-2 text-white/60 text-sm mb-6 ${
+                    isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                  }`}
+                  style={{
+                    animationDelay: isClosingDetails ? '100ms' : '200ms',
+                    animationFillMode: 'forwards'
+                  }}
                 >
                   <MapPin size={14} className="text-studio-accent" />
                   <span>{item.location}</span>
@@ -305,15 +337,25 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
 
               {/* Divider */}
               <div
-                className="w-16 h-px bg-studio-accent/50 mx-auto mb-6 animate-scaleX opacity-0"
-                style={{ animationDelay: '250ms', animationFillMode: 'forwards' }}
+                className={`w-16 h-px bg-studio-accent/50 mx-auto mb-6 ${
+                  isClosingDetails ? 'animate-scaleXReverse' : 'animate-scaleX opacity-0'
+                }`}
+                style={{
+                  animationDelay: isClosingDetails ? '50ms' : '250ms',
+                  animationFillMode: 'forwards'
+                }}
               />
 
               {/* EXIF */}
               {item.exif && (
                 <div
-                  className="animate-slideDown opacity-0"
-                  style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}
+                  className={`${
+                    isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                  }`}
+                  style={{
+                    animationDelay: isClosingDetails ? '0ms' : '300ms',
+                    animationFillMode: 'forwards'
+                  }}
                 >
                   <div className="flex items-center justify-center gap-2.5 mb-5">
                     <Camera size={20} className="text-studio-accent" />
@@ -342,8 +384,13 @@ export default function Lightbox({ item, items, onClose, onNavigate, initialRect
 
               {/* Close hint */}
               <p
-                className="mt-8 text-white/40 text-xs animate-slideDown opacity-0"
-                style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
+                className={`mt-8 text-white/40 text-xs ${
+                  isClosingDetails ? 'animate-slideUpOut' : 'animate-slideDown opacity-0'
+                }`}
+                style={{
+                  animationDelay: isClosingDetails ? '0ms' : '400ms',
+                  animationFillMode: 'forwards'
+                }}
               >
                 Tap anywhere to close
               </p>
