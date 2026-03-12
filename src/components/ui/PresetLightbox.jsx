@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useLayoutEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Check, ExternalLink } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Check, Calendar } from 'lucide-react';
 
 export default function PresetLightbox({ preset, onClose, initialRect }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -352,19 +352,12 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
             className="animate-slideDown opacity-0"
             style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
           >
-            <p className="font-display text-studio-heading text-4xl mb-6">
-              {preset.price}
-            </p>
-
-            <a
-              href={preset.storeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full text-sm tracking-widest uppercase px-6 py-4 bg-studio-accent text-black border border-studio-accent hover:bg-studio-accent-hover transition-all duration-300"
-            >
-              Purchase
-              <ExternalLink size={14} />
-            </a>
+            <div className="flex items-center gap-2 text-studio-accent">
+              <Calendar size={18} />
+              <p className="text-sm tracking-widest uppercase">
+                Available in April 2026
+              </p>
+            </div>
           </div>
         </div>
 
@@ -378,19 +371,11 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
               {preset.description}
             </p>
 
-            <div className="flex items-center justify-center gap-4">
-              <p className="font-display text-studio-heading text-2xl">
-                {preset.price}
+            <div className="flex items-center justify-center gap-2 text-studio-accent">
+              <Calendar size={14} />
+              <p className="text-xs tracking-widest uppercase">
+                Available in April 2026
               </p>
-              <a
-                href={preset.storeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs tracking-widest uppercase px-5 py-2.5 bg-studio-accent text-black hover:bg-studio-accent-hover transition-all duration-300"
-              >
-                Purchase
-                <ExternalLink size={12} />
-              </a>
             </div>
           </div>
         </div>

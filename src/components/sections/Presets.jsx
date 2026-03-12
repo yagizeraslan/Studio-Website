@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check, ExternalLink, Eye } from 'lucide-react';
+import { Check, Eye, Calendar } from 'lucide-react';
 import { presets } from '../../data/presets';
 import ScrollReveal from '../ui/ScrollReveal';
 import PresetLightbox from '../ui/PresetLightbox';
@@ -22,20 +22,20 @@ export default function Presets() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <p className="text-studio-accent text-xs tracking-[0.3em] uppercase mb-4">
-              Presets &amp; LUTs
+              Lightroom Presets
             </p>
             <h2 className="font-display text-studio-heading text-4xl sm:text-5xl mb-4">
               Edit Like a Pro
             </h2>
             <p className="text-studio-body max-w-2xl mx-auto mb-6">
-              The same Lightroom presets and video LUTs I use in my own work — crafted for
+              The same Lightroom presets I use in my own work — crafted for
               urban night photography and cinematic street scenes.
             </p>
             <div className="gold-line max-w-xs mx-auto" />
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {presets.map((preset, i) => (
             <ScrollReveal key={preset.id} delay={i * 100}>
               <div
@@ -90,25 +90,13 @@ export default function Presets() {
                     ))}
                   </ul>
 
-                  <div className="mt-auto border-t border-studio-border pt-6 flex items-end justify-between">
-                    <div>
-                      <p className="font-display text-studio-heading text-2xl">
-                        {preset.price}
+                  <div className="mt-auto border-t border-studio-border pt-6">
+                    <div className="flex items-center justify-center gap-2 text-studio-accent">
+                      <Calendar size={16} />
+                      <p className="text-sm tracking-widest uppercase">
+                        Available in April 2026
                       </p>
                     </div>
-                    <a
-                      href={preset.storeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-2 text-xs tracking-widest uppercase px-5 py-2.5 border transition-all duration-300 ${
-                        preset.popular
-                          ? 'bg-studio-accent text-black border-studio-accent hover:bg-studio-accent-hover'
-                          : 'border-studio-accent text-studio-accent hover:bg-studio-accent hover:text-black'
-                      }`}
-                    >
-                      Get It
-                      <ExternalLink size={12} />
-                    </a>
                   </div>
                 </div>
               </div>
