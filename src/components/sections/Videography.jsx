@@ -2,6 +2,18 @@ import ScrollReveal from '../ui/ScrollReveal';
 
 const videos = [
   {
+    id: 'Zhc5yBV1BO4',
+    title: 'Dublin Streets',
+    description: 'Daytime street scenes capturing the vibrant atmosphere of Dublin city.',
+    aspect: '3/4',
+  },
+  {
+    id: 'JG4qppQMCPo',
+    title: 'Dublin Daytime',
+    description: 'Exploring Dublin during the day with cinematic mobile footage.',
+    aspect: '3/4',
+  },
+  {
     id: 'xbD85OcWa-A',
     title: 'Rainy Night At Dublin',
     description: 'Cinematic night footage capturing Dublin streets in the rain.',
@@ -42,7 +54,7 @@ export default function Videography() {
         </ScrollReveal>
       </div>
 
-      {/* Videos - full width edge to edge like Portfolio */}
+      {/* Videos - 3 column grid */}
       <div className="px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {videos.map((video, index) => (
