@@ -67,6 +67,15 @@ export const portfolioItems = [
     location: 'Trabzon, Türkiye',
     exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/6s', aperture: 'f/2.5', iso: 1867, focalLength: '120mm' },
   },
+  {
+    id: 36,
+    title: 'Hotel Noir',
+    category: 'Night Urban',
+    description: 'A couple walks hand-in-hand through a narrow alley beneath a glowing pink neon HOTEL sign.',
+    src: `${IMAGE_BASE}/IMG_20240906_225317.jpg`,
+    location: 'İstanbul, Türkiye',
+    exif: { camera: 'Xiaomi 14 Ultra', shutter: '1/25s', aperture: 'f/1.8', iso: 2500, focalLength: '75mm' },
+  },
 
   // Architecture
   {

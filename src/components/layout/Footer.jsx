@@ -65,9 +65,21 @@ export default function Footer() {
 
         <div className="gold-line mt-12 mb-6" />
 
-        <p className="text-center text-studio-body/60 text-xs">
-          &copy; {new Date().getFullYear()} {siteConfig.brand}. All rights reserved.
-        </p>
+        <div className="text-center text-studio-body/60 text-xs space-y-1">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.brand}. All rights reserved. Unauthorized use prohibited.
+          </p>
+          <p>
+            For licensing inquiries,{' '}
+            <button
+              onClick={() => handleClick('contact')}
+              className="text-studio-accent hover:text-studio-heading transition-colors bg-transparent border-none cursor-pointer underline"
+            >
+              contact me
+            </button>
+            .
+          </p>
+        </div>
       </div>
     </footer>
   );
