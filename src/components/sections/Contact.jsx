@@ -135,9 +135,8 @@ export default function Contact() {
                 Let&apos;s Create Together
               </h3>
               <p className="text-studio-body leading-relaxed mb-8">
-                Whether you have a specific project in mind or just want to explore
-                possibilities, I&apos;d love to hear from you. Every great image starts
-                with a conversation.
+                Interested in image licensing, collaborations, or commercial projects?
+                I&apos;d love to hear from you. Every great image starts with a conversation.
               </p>
 
               <div className="space-y-4 mb-8">
