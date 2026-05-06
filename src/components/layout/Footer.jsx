@@ -8,7 +8,8 @@ const socialIcons = [
 ];
 
 const footerLinks = [
-  { id: 'portfolio', label: 'Portfolio' },
+  { id: 'featured', label: 'Featured' },
+  { id: 'photography', label: 'Photography' },
   { id: 'presets', label: 'Presets' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },

@@ -1,6 +1,7 @@
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
+import FeaturedWork from './components/sections/FeaturedWork';
 import Portfolio from './components/sections/Portfolio';
 import Videography from './components/sections/Videography';
 import Presets from './components/sections/Presets';
@@ -12,6 +13,7 @@ export default function App() {
     <div className="min-h-screen bg-studio-bg">
       <Navbar />
       <Hero />
+      <FeaturedWork />
       <Portfolio />
       <Videography />
       <Presets />
