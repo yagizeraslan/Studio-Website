@@ -355,7 +355,7 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
             <div className="flex items-center gap-2 text-studio-accent">
               <Calendar size={18} />
               <p className="text-sm tracking-widest uppercase">
-                Available in April 2026
+                Coming Soon
               </p>
             </div>
           </div>
@@ -374,7 +374,7 @@ export default function PresetLightbox({ preset, onClose, initialRect }) {
             <div className="flex items-center justify-center gap-2 text-studio-accent">
               <Calendar size={14} />
               <p className="text-xs tracking-widest uppercase">
-                Available in April 2026
+                Coming Soon
               </p>
             </div>
           </div>

@@ -94,7 +94,7 @@ export default function Presets() {
                     <div className="flex items-center justify-center gap-2 text-studio-accent">
                       <Calendar size={16} />
                       <p className="text-sm tracking-widest uppercase">
-                        Available in April 2026
+                        Coming Soon
                       </p>
                     </div>
                   </div>
