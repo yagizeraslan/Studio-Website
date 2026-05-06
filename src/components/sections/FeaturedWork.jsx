@@ -8,10 +8,16 @@ const campaigns = [
   {
     id: 1,
     title: 'Dublin By Dusk',
-    client: 'DublinTown BID & Fáilte Ireland',
+    client: 'Dublin By Dusk Campaign',
     year: '2026',
     description: 'Hero image for citywide nightlife and culture initiative. Used as official campaign poster at the National Library photocall with DublinTown CEO and Dublin City Council officials. Featured on dublin.ie, Irish Independent, digital panels, and bus shelters across Dublin.',
     image: `${IMAGE_BASE}/IMG_20251213_162127%20(1).jpg`,
+    logos: [
+      { name: 'Fáilte Ireland', src: '/logos/Failte-Ireland-Logo.png' },
+      { name: 'DublinTown', src: '/logos/Dublin-Town-Logo.png' },
+      { name: 'Dublin City Council', src: '/logos/DublinCityCouncil-Logo.png' },
+      { name: 'Dublin.ie', src: '/logos/Dublin-IE-Logo.png' },
+    ],
     links: [
       { label: 'Dublin.ie', url: 'https://dublin.ie/live/dublin-nights/dublin-by-dusk/' },
       { label: 'Irish Independent', url: 'https://www.independent.ie/life/travel/travel-news/dublin-by-dusk-pubs-hotels-and-clubs-in-dublin-to-stay-open-later-once-a-month-through-new-initiative/a542303996.html' },
@@ -33,6 +39,9 @@ const campaigns = [
     year: '2024',
     description: 'Featured photographer in Xiaomi\'s global photo calendar, showcasing mobile photography excellence.',
     image: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg`,
+    logos: [
+      { name: 'Xiaomi', src: '/logos/Xiaomi-logo.png' },
+    ],
     links: [
       { label: 'View Feature', url: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzU5MjAwMTIwMTc4OTIz?story_media_id=3607735190075505590_197534330&igsh=MWJxaG40NnViNnJ0aQ==' },
     ],
@@ -74,6 +83,7 @@ export default function FeaturedWork() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {campaigns.map((campaign, index) => (
             <ScrollReveal key={campaign.id} delay={index * 100}>
+              {/* Card */}
               <div
                 onClick={() => openModal(campaign)}
                 className="group cursor-pointer bg-studio-bg border border-studio-border overflow-hidden hover:border-studio-accent/50 transition-all duration-300"
@@ -106,6 +116,21 @@ export default function FeaturedWork() {
                   </p>
                 </div>
               </div>
+
+              {/* Partner Logos - Outside card */}
+              {campaign.logos && campaign.logos.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
+                  {campaign.logos.map((logo) => (
+                    <img
+                      key={logo.name}
+                      src={logo.src}
+                      alt={logo.name}
+                      title={logo.name}
+                      className="h-10 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                    />
+                  ))}
+                </div>
+              )}
             </ScrollReveal>
           ))}
         </div>
@@ -153,6 +178,26 @@ export default function FeaturedWork() {
               <p className="text-studio-body text-sm leading-relaxed mb-6">
                 {selectedCampaign.description}
               </p>
+
+              {/* Partner Logos */}
+              {selectedCampaign.logos && selectedCampaign.logos.length > 0 && (
+                <>
+                  <p className="text-studio-accent text-xs uppercase tracking-wider mb-3">
+                    Partners
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4 mb-6">
+                    {selectedCampaign.logos.map((logo) => (
+                      <img
+                        key={logo.name}
+                        src={logo.src}
+                        alt={logo.name}
+                        title={logo.name}
+                        className="h-8 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
 
               {/* Links */}
               <p className="text-studio-accent text-xs uppercase tracking-wider mb-2">
