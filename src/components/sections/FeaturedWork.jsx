@@ -10,7 +10,7 @@ const campaigns = [
     title: 'Dublin By Dusk',
     client: 'Dublin By Dusk Campaign',
     year: '2026',
-    description: 'Hero image for citywide nightlife and culture initiative. Used as official campaign poster at the National Library photocall with DublinTown CEO and Dublin City Council officials. Featured on dublin.ie, Irish Independent, digital panels, and bus shelters across Dublin.',
+    description: 'Hero image for citywide nightlife and culture initiative. Used as official campaign poster at the Dublin By Dusk photocall with DublinTown CEO and Dublin City Council officials. Featured on dublin.ie, Irish Independent, digital panels, and bus shelters across Dublin.',
     image: `${IMAGE_BASE}/IMG_20251213_162127%20(1).jpg`,
     logos: [
       { name: 'Fáilte Ireland', src: '/logos/Failte-Ireland-Logo.png' },
