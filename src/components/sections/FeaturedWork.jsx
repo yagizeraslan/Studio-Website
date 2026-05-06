@@ -10,12 +10,20 @@ const campaigns = [
     title: 'Dublin By Dusk',
     client: 'DublinTown BID & Fáilte Ireland',
     year: '2026',
-    description: 'Hero image for citywide nightlife and culture initiative. Featured on dublin.ie, Irish Independent, Instagram campaigns, and selected for Fáilte Ireland tourism placements.',
+    description: 'Hero image for citywide nightlife and culture initiative. Used as official campaign poster at the National Library photocall with DublinTown CEO and Dublin City Council officials. Featured on dublin.ie, Irish Independent, digital panels, and bus shelters across Dublin.',
     image: `${IMAGE_BASE}/IMG_20251213_162127%20(1).jpg`,
     links: [
-      { label: 'dublin.ie', url: 'https://dublin.ie/live/dublin-nights/dublin-by-dusk/' },
+      { label: 'Dublin.ie', url: 'https://dublin.ie/live/dublin-nights/dublin-by-dusk/' },
       { label: 'Irish Independent', url: 'https://www.independent.ie/life/travel/travel-news/dublin-by-dusk-pubs-hotels-and-clubs-in-dublin-to-stay-open-later-once-a-month-through-new-initiative/a542303996.html' },
+      { label: 'Photocall Video', url: 'https://www.instagram.com/p/DXwgPHpDr8U/' },
       { label: 'Instagram', url: 'https://www.instagram.com/p/DXvzSd6iFc5/' },
+    ],
+    sharedBy: [
+      { name: 'Dublin\'s Night Mayor', handle: '@RayRazor', url: 'https://www.instagram.com/rayrazor/' },
+      { name: 'Dublin City Council', handle: '@dublincitycouncil', url: 'https://www.instagram.com/dublincitycouncil/' },
+      { name: 'Dept. of Culture', handle: '@deptculturecommssport', url: 'https://www.instagram.com/deptculturecommssport/' },
+      { name: 'DublinTown', handle: '@dublintown_', url: 'https://www.instagram.com/dublintown_/' },
+      { name: 'Dublin.ie', handle: '@dublin_ie', url: 'https://www.instagram.com/dublin_ie/' },
     ],
   },
   {
@@ -147,6 +155,9 @@ export default function FeaturedWork() {
               </p>
 
               {/* Links */}
+              <p className="text-studio-accent text-xs uppercase tracking-wider mb-2">
+                Featured In
+              </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {selectedCampaign.links.map((link) => (
                   <a
@@ -161,6 +172,28 @@ export default function FeaturedWork() {
                   </a>
                 ))}
               </div>
+
+              {/* Shared By */}
+              {selectedCampaign.sharedBy && selectedCampaign.sharedBy.length > 0 && (
+                <>
+                  <p className="text-studio-accent text-xs uppercase tracking-wider mb-2">
+                    Shared By
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {selectedCampaign.sharedBy.map((account) => (
+                      <a
+                        key={account.url}
+                        href={account.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-studio-body hover:text-studio-accent transition-colors border border-studio-border/50 px-3 py-1.5 hover:border-studio-accent/50"
+                      >
+                        {account.name}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              )}
 
               <p className="text-studio-body/40 text-xs">
                 Shot on Xiaomi 14 Ultra

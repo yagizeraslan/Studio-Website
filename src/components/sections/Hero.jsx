@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Star } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -36,19 +36,28 @@ export default function Hero() {
           Capturing the soul of cities after dark — where neon meets rain,
           and every street tells a story.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
+        <div className="flex flex-col items-center gap-4 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
           <a
-            href="#photography"
-            className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
+            href="#featured"
+            className="inline-flex items-center gap-2 bg-studio-accent text-black border border-studio-accent px-10 py-4 text-base tracking-widest uppercase hover:bg-transparent hover:text-studio-accent transition-all duration-300"
           >
-            Photography
+            <Star size={18} fill="currentColor" />
+            Featured
           </a>
-          <a
-            href="#videography"
-            className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
-          >
-            Videography
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#photography"
+              className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
+            >
+              Photography
+            </a>
+            <a
+              href="#videography"
+              className="border border-studio-accent text-studio-accent px-8 py-3 text-sm tracking-widest uppercase hover:bg-studio-accent hover:text-black transition-all duration-300"
+            >
+              Videography
+            </a>
+          </div>
         </div>
       </div>
 
