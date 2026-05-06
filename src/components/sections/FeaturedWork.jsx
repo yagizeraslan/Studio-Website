@@ -41,6 +41,7 @@ const campaigns = [
     image: `${IMAGE_BASE}/IMG_20240906_220756%20(3).jpg`,
     logos: [
       { name: 'Xiaomi', src: '/logos/Xiaomi-logo.png' },
+      { name: 'Xiaomi Imagery Awards', src: '/logos/Xiaomi-Imagery-Awards-Logo.png' },
     ],
     links: [
       { label: 'View Feature', url: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MzU5MjAwMTIwMTc4OTIz?story_media_id=3607735190075505590_197534330&igsh=MWJxaG40NnViNnJ0aQ==' },
