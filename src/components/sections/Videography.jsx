@@ -2,6 +2,12 @@ import ScrollReveal from '../ui/ScrollReveal';
 
 const videos = [
   {
+    id: 'VRnF9taCZcc',
+    title: 'St. Stephen\'s Green in Motion',
+    description: 'Cinematic daytime footage capturing the spring atmosphere of St. Stephen\'s Green park.',
+    aspect: '3/4',
+  },
+  {
     id: 'Zhc5yBV1BO4',
     title: 'Dublin Streets',
     description: 'Daytime street scenes capturing the vibrant atmosphere of Dublin city.',
