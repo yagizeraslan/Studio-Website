@@ -34,13 +34,13 @@ const videos = [
   {
     id: 'ONpHRSbUruQ',
     title: 'Samuel Beckett Bridge',
-    description: 'Full sensor RAW video of Dublin\'s iconic cable-stayed bridge.',
+    description: 'Capturing the elegant lines of Dublin\'s iconic cable-stayed bridge.',
     aspect: '3/4',
   },
   {
     id: '-BvOrM1wCkA',
-    title: 'Dublin in 10-Bit RAW',
-    description: 'Showcasing Xiaomi 14 Ultra\'s RAW DNG video capabilities.',
+    title: 'Dublin during Christmas',
+    description: 'Festive lights and holiday atmosphere illuminating Dublin\'s streets.',
     aspect: '3/4',
   },
 ];
