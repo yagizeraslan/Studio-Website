@@ -2,6 +2,12 @@ import ScrollReveal from '../ui/ScrollReveal';
 
 const videos = [
   {
+    id: 'pGVLMHfXJco',
+    title: 'Malahide Castle',
+    description: 'Cinematic footage exploring the historic grounds of Malahide Castle.',
+    aspect: '3/4',
+  },
+  {
     id: 'VRnF9taCZcc',
     title: 'St. Stephen\'s Green in Motion',
     description: 'Cinematic daytime footage capturing the spring atmosphere of St. Stephen\'s Green park.',
