@@ -2,6 +2,12 @@ import ScrollReveal from '../ui/ScrollReveal';
 
 const videos = [
   {
+    id: 'ccKA6y9w-0o',
+    title: 'Galway Cathedral',
+    description: 'Cinematic footage capturing the atmospheric gothic architecture of Galway Cathedral.',
+    aspect: '3/4',
+  },
+  {
     id: 'pGVLMHfXJco',
     title: 'Malahide Castle',
     description: 'Cinematic footage exploring the historic grounds of Malahide Castle.',
